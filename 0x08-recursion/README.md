@@ -1,0 +1,2 @@
+0x08. C - Recursion
+Recursion in C is a super interesting topic. Basically, recursion is a way to solve problems by breaking them down into smaller, simpler problems that can be solved more easily. It's like the old saying "How do you eat an elephant? One bite at a time!" 😄. In C, recursion is achieved using function calls. So a function calls itself to perform a specific task, then continues to call itself until the task is complete.
