@@ -14,42 +14,31 @@
 
 list_t *add_node_end(list_t **head, const char *str)
 {
-list_t *new_node, *last_node;
+	list_t *new;
+	list_t *temp = *head;
+	unsigned int len = 0;
 
-/* Allocate memory for the new node. */
-new_node = malloc(sizeof(list_t));
-if (new_node == NULL)
-{
-return (NULL);
-}
+	while (str[len])
+		len++;
 
-/* Duplicate the string. */
-new_node->str = strdup(str);
-if (new_node->str == NULL)
-{
-free(new_node);
-return (NULL);
-}
+	new = malloc(sizeof(list_t));
+	if (!new)
+		return (NULL);
 
-/* Set the next pointer of the new node to NULL. */
-new_node->next = NULL;
+	new->str = strdup(str);
+	new->len = len;
+	new->next = NULL;
 
-/* If the list is empty, make the new node the head of the list. */
-if (*head == NULL)
-{
-*head = new_node;
-return (new_node);
-}
+	if (*head == NULL)
+	{
+		*head = new;
+		return (new);
+	}
 
-/* Find the last node in the list. */
-last_node = *head;
-while (last_node->next != NULL)
-{
-last_node = last_node->next;
-}
+	while (temp->next)
+		temp = temp->next;
 
-/* Set the next pointer of the last node to the new node. */
-last_node->next = new_node;
+	temp->next = new;
 
-return (new_node);
+	return (new);
 }
