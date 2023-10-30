@@ -10,43 +10,21 @@
  * read by EmEch
  * Return: the actual number of letters it should read and print
  */
-ssize_t read_textfile(const char *filename, size_t letters);
+ssize_t read_textfile(const char *filename, size_t letters)
 {
-	int fd, bytes_read, bytes_written;
-	char *buffer;
+	char *redd;
+	ssize_t folder;
+	ssize_t wri;
+	ssize_t ho;
 
-	if (filename == NULL)
+	folder = open(filename, O_RDONLY);
+	if (folder == -1)
 		return (0);
+	redd = malloc(sizeof(char) * letters);
+	ho = read(folder, redd, letters);
+	wri = write(STDOUT_FILENO, redd, ho);
 
-	buffer = malloc(sizeof(char) * (letters + 1));
-	if (buffer == NULL)
-		return (0);
-
-	fd = open(filename, 0_RDONLY);
-	if (fd == -1)
-	{
-		free(buffer);
-		return (0);
-	}
-
-	bytes_read = read(fd, buffer, letters);
-	if (bytes_read == -1)
-	{
-		free(buffer);
-		close(fd);
-		return (0);
-	}
-
-	bytes_written = write(STDOUT_FILENO, buffer, bytes_read);
-	if (bytes_written == -1 || bytes_written != bytes_read)
-	{
-		free(buffer);
-		close(fd);
-		return (0);
-	}
-
-	free(buffer);
-	close(fd);
-	return (bytes_written);
-
+	free(redd);
+	close(folder);
+	return (wri);
 }
