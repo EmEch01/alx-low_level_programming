@@ -1,0 +1,15 @@
+# Define the compiler to be used
+CC = gcc
+
+# Define the source files
+SRC = main.c school.c
+
+# Define the name of the executable
+EXECUTABLE = school
+
+# Define the rules
+all: $(EXECUTABLE)
+
+# Build the executable
+$(EXECUTABLE): $(SRC)
+    $(CC) $(SRC) -o $(EXECUTABLE)
