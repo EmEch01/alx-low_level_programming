@@ -1,15 +1,12 @@
-# Define the compiler to be used
+# Create your first useful Makefile.
+
 CC = gcc
 
 # Define the source files
 SRC = main.c school.c
 
-# Define the name of the executable
-EXECUTABLE = school
-
 # Define the rules
-all: $(EXECUTABLE)
+all: ${SRC}
 
 # Build the executable
-$(EXECUTABLE): $(SRC)
-    $(CC) $(SRC) -o $(EXECUTABLE)
+    ${CC} ${SRC} -o school
