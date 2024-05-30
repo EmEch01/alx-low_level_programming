@@ -3,4 +3,4 @@
 all: $(EXECUTABLE)
 
 $(EXECUTABLE): main.c school.c
-	gcc main.c school.c -o $(EXECUTABLE)
+	gcc main.c school.c -o school
